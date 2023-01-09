@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('curriculams', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('number');
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
+
+            $table->foreign('course_id')->reference('id')->on('courses')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('due_date');
+            $table->dateTime('paid_date');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
         });
     }
 

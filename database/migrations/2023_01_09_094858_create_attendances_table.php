@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('class_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->foreign('class_id')->reference('id')->on('class')->onDelete('cascade');
+            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
         });
     }
 

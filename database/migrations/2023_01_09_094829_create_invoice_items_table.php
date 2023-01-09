@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('invoice_items', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('price');
+            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('invoice_id');
             $table->timestamps();
+
+            $table->foreign('invoice_id')->reference('id')->on('invoices')->onDelete('cascade');
         });
     }
 

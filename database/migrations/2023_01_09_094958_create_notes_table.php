@@ -15,7 +15,17 @@ return new class extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
+            $table->text('description');
+            $table->unsignedBigInteger('curriculum_id');
+            $table->unsignedBigInteger('exam_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('lead_id');
             $table->timestamps();
+
+            $table->foreign('curriculum_id')->reference('id')->on('curriculums')->onDelete('cascade');
+            $table->foreign('exam_id')->reference('id')->on('exams')->onDelete('cascade');
+            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
+            $table->foreign('lead_id')->reference('id')->on('leads')->onDelete('cascade');
         });
     }
 
