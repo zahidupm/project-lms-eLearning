@@ -22,10 +22,10 @@ return new class extends Migration
             $table->unsignedBigInteger('lead_id');
             $table->timestamps();
 
-            $table->foreign('curriculum_id')->reference('id')->on('curriculums')->onDelete('cascade');
-            $table->foreign('exam_id')->reference('id')->on('exams')->onDelete('cascade');
-            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
-            $table->foreign('lead_id')->reference('id')->on('leads')->onDelete('cascade');
+            $table->foreign('curriculum_id')->references('id')->on('curriculums')->onDelete('cascade');
+            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
         });
     }
 
