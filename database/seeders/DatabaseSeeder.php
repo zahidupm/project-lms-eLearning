@@ -27,28 +27,49 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $user = new User;
-        $user->name = 'Super Admin';
-        $user->email = 'super@admin.com';
-        $user->password = bcrypt('password');
-        $user->save();
+        // $user = new User;
+        // $user->name = 'Super Admin';
+        // $user->email = 'super@admin.com';
+        // $user->password = bcrypt('password');
+        // $user->save();
 
-        $role = Role::create([
-            'name' => 'Super Admin',
-        ]);
+        // $user = User::create([
+        //     'name' => 'Super Admin',
+        //     'email' => 'super-admin@lms.test',
+        //     'password' => bcrypt('password')
+        // ]);
 
-        $permission = Permission::create([
-            'name' => 'create-admin'
-        ]);
+        // $role = Role::create([
+        //     'name' => 'Super Admin',
+        // ]);
 
-        $role->givePermissionTo($permission);
-        $permission->assignRole($role);
+        // $permission = Permission::create([
+        //     'name' => 'create-admin'
+        // ]);
 
-        $user->assignRole($role);
+        // $role->givePermissionTo($permission);
+        // $permission->assignRole($role);
 
-        $communicationRole = Role::create([
-            'name' => 'Communication'
-        ]);
+        // $user->assignRole($role);
+
+        // $communicationRole = Role::create([
+        //     'name' => 'Communication'
+        // ]);
+
+        // $user = User::create([
+        //     'name' => 'Communication Team',
+        //     'email' => 'communication@lms.test',
+        //     'password' => bcrypt('password')
+        // ]);
+
+        // $user->assignRole($communicationRole);
+
+        $this->create_user_with_role('Super Admin', 'Super Admin', 'super-admin@lms.test');
+        $this->create_user_with_role('Communication', 'Communication Team', 'communication@lms.test');
+        $teacher = $this->create_user_with_role('Teacher', 'Teacher', 'teacher@lms.test');
+
+
+
 
         // create leads
         Lead::factory(100)->create();
@@ -57,8 +78,33 @@ class DatabaseSeeder extends Seeder
             'name'=> 'Laravel',
             'description' => 'Laravel is a web application framework with expressive, elegant syntax, We have a owerfaskdfo poqwehfaosd',
             'image' => 'https://laravel.com/img/logomark.min.svg',
+            'user_id' => $teacher->id
         ]);
 
         Curriculum::factory(10)->create();
+    }
+
+    private function create_user_with_role($type, $name, $email) {
+        $role = Role::create([
+            'name' => $type
+        ]);
+
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt('password')
+        ]);
+
+        if($type == 'Super Admin') {
+            $permission = Permission::create([
+                'name' => 'create-admin'
+            ]);
+            $role->givePermissionTo($permission);
+        }
+
+
+        $user->assignRole($role);
+
+        return $user;
     }
 }
