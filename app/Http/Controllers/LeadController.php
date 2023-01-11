@@ -15,13 +15,8 @@ class LeadController extends Controller
      */
     public function index(FlasherInterface $flasher)
     {
-        $user = Auth::user();
-        $check = $user->hasPermissionTo('lead-management');
-        // dd($check);
-        if(!$check) {
-            flash()->addWarning('Your are not authorized to access this page');
-            return redirect()->route('dashboard');
-        }
+        // permission check
+        lms_unauthorized('lead-management');
 
 
         return view('lead.index');

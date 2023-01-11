@@ -17,7 +17,7 @@ class LeadIndex extends Component
         ]);
     }
 
-    public function leadDelete($id, FlasherInterface $flasher) {
+    public function leadDelete($id) {
         $lead = Lead::findOrFail($id);
         $lead->delete();
 
