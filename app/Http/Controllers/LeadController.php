@@ -62,7 +62,9 @@ class LeadController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('lead.edit', [
+            'lead_id' => $id,
+        ]);
     }
 
     /**
