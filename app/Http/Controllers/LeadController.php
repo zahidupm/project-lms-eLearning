@@ -16,7 +16,7 @@ class LeadController extends Controller
     public function index(FlasherInterface $flasher)
     {
         // permission check
-        lms_unauthorized('lead-management');
+        permission_check('lead-management');
 
 
         return view('lead.index');
