@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Lead;
+use App\Models\Note;
 use Flasher\Prime\FlasherInterface;
 
 class LeadEdit extends Component
@@ -12,6 +13,7 @@ class LeadEdit extends Component
     public $name;
     public $email;
     public $phone;
+    public $note;
 
     public function mount() {
         $lead = Lead::findOrFail($this->lead_id);
@@ -24,8 +26,9 @@ class LeadEdit extends Component
     public function render()
     {
         $lead = Lead::findOrFail($this->lead_id);
+
         return view('livewire.lead-edit', [
-            'lead' => $lead
+            'notes' => $lead->notes
         ]);
     }
 
@@ -45,5 +48,16 @@ class LeadEdit extends Component
         $lead->save();
 
         flash()->addSuccess('Lead updated successfully');
+    }
+
+    public function addNote(FlasherInterface $flasher) {
+        $note = new Note();
+        $note->description = $this->note;
+        $note->lead_id = $this->lead_id;
+        $note->save();
+
+        $this->note = '';
+
+        flash()->addSuccess('Note added successfully');
     }
 }
