@@ -25,6 +25,6 @@
             @enderror
         </div>
 
-        <button type="submit" class="lms-btn">Update</button>
+        @include('components.wire-loading-btn')
     </form>
 </div>
