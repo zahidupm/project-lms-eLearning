@@ -27,44 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $user = new User;
-        // $user->name = 'Super Admin';
-        // $user->email = 'super@admin.com';
-        // $user->password = bcrypt('password');
-        // $user->save();
-
-        // $user = User::create([
-        //     'name' => 'Super Admin',
-        //     'email' => 'super-admin@lms.test',
-        //     'password' => bcrypt('password')
-        // ]);
-
-        // $role = Role::create([
-        //     'name' => 'Super Admin',
-        // ]);
-
-        // $permission = Permission::create([
-        //     'name' => 'create-admin'
-        // ]);
-
-        // $role->givePermissionTo($permission);
-        // $permission->assignRole($role);
-
-        // $user->assignRole($role);
-
-        // $communicationRole = Role::create([
-        //     'name' => 'Communication'
-        // ]);
-
-        // $user = User::create([
-        //     'name' => 'Communication Team',
-        //     'email' => 'communication@lms.test',
-        //     'password' => bcrypt('password')
-        // ]);
-
-        // $user->assignRole($communicationRole);
-
-        $defaultPermissions = ['lead-management', 'create-admin'];
+        $defaultPermissions = ['lead-management', 'create-admin', 'user-management'];
         foreach($defaultPermissions as $permission) {
             Permission::create(['name' => $permission]);
         }
