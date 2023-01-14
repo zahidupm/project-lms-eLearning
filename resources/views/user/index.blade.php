@@ -1,11 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Users') }}
             </h2>
 
-            <a class="lms-btn" href="{{route('user.create')}}">Add new user</a>
+            <div class="flex items-center">
+                <a class="lms-btn mr-4" href="{{route('role.index')}}">Roles</a>
+                <a class="lms-btn" href="{{route('user.create')}}">Add new user</a>
+            </div>
         </div>
     </x-slot>
 

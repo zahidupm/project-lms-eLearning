@@ -1,11 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Users') }}
+                {{ __('Roles') }}
             </h2>
 
-            <a class="lms-btn" href="{{route('user.index')}}">Back</a>
+            <div class="flex items-center">
+                <a class="lms-btn" href="{{route('role.create')}}">Add new role</a>
+            </div>
         </div>
     </x-slot>
 
@@ -13,7 +15,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <livewire:user-create />
+                    <livewire:role-index />
                 </div>
             </div>
         </div>

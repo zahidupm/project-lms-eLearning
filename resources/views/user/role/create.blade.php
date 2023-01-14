@@ -2,10 +2,10 @@
     <x-slot name="header">
         <div class="flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Users') }}
+                {{ __('Roles') }}
             </h2>
 
-            <a class="lms-btn" href="{{route('user.index')}}">Back</a>
+            <a class="lms-btn" href="{{route('role.index')}}">Back</a>
         </div>
     </x-slot>
 
