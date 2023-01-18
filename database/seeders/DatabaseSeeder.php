@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
 
         $course = Course::create([
             'name'=> 'Laravel',
+            'slug'=> 'Laravel',
             'description' => 'Laravel is a web application framework with expressive, elegant syntax, We have a owerfaskdfo poqwehfaosd',
             'image' => 'https://laravel.com/img/logomark.min.svg',
             'user_id' => $teacher->id,
