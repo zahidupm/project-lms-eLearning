@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curriculum extends Model
 {
+    protected $fillable = [
+        'name',
+        'week_day',
+        'class_time',
+        'end_date',
+        'course_id'
+    ];
 
     protected $table = 'curriculums';
 
@@ -26,5 +33,9 @@ class Curriculum extends Model
 
     public function course() {
         return $this->belongsTo(Course::class);
+    }
+
+    public function presentStudents() {
+        return Attendance::where('curriculum_id', $this->id)->count();
     }
 }
