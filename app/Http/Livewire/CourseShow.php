@@ -22,7 +22,7 @@ class CourseShow extends Component
         ]);
     }
 
-     public function curriculamDelete($id, FlasherInterface $flasher)
+     public function curriculamDelete($id)
      {
          $curriculum = Curriculum::findOrFail($id);
 
