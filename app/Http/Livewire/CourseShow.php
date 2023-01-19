@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Course;
 use App\Models\Curriculum;
+use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 
 
@@ -21,12 +22,12 @@ class CourseShow extends Component
         ]);
     }
 
-    // public function curriculamDelete($id, FlasherInterface $flasher)
-    // {
-    //     $curriculum = Curriculum::findOrFail($id);
+     public function curriculamDelete($id, FlasherInterface $flasher)
+     {
+         $curriculum = Curriculum::findOrFail($id);
 
-    //     $curriculum->delete();
+         $curriculum->delete();
 
-    //     flash()->addSuccess('Curriculum deleted successfully');
-    // }
+         flash()->addSuccess('Curriculum deleted successfully');
+     }
 }

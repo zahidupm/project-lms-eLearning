@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Attendance;
 use App\Models\Curriculum;
 use App\Models\Note;
+use Flasher\Prime\FlasherInterface;
 use Livewire\Component;
 
 class CurriculumShow extends Component
@@ -39,7 +40,7 @@ class CurriculumShow extends Component
           flash()->addSuccess('Note added successfully!');
     }
 
-    public function attendance($student_id) {
+    public function attendance($student_id, FlasherInterface $flasher) {
         Attendance::create([
             'curriculum_id' => $this->curriculum_id,
             'user_id' => $student_id
